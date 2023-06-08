@@ -1,5 +1,7 @@
 # mindgraph
 
+test
+
 A web based graph view for markdown notes - based on [obsidian](https://obsidian.md/)'s graph view.
 
 **In active development and will likely have breaking changes before v1.0**
