@@ -20,32 +20,5 @@ jobs:
         with:
           node-version: 18
           cache: 'pnpm'
-      - name: Cache Cypress binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            cypress-${{ runner.os }}-cypress-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
       - run: pnpm install --frozen-lockfile
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8.6.0
-          run_install: false
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
-      - name: Restore Cached Cypress binary
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/Cypress
-          key: cypress-${{ runner.os }}-cypress-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            cypress-${{ runner.os }}-cypress-${{ github.ref }}-${{ hashFiles('**/package-lock.json') }}
       - run: pnpm run ci
